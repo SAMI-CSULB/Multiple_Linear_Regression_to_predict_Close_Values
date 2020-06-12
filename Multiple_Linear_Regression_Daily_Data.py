@@ -1,6 +1,14 @@
 # Using Daily dataset and applying Multiple Linear Regression Technique
 # Daily Data is saved in Daily_Data.csv
 '''
+import pymongo
+import pandas as pd
+
+mongo_client = pymongo.MongoClient('mongodb://mlcandidates:crackthecode@100.2.158.147:27017/')
+finDb = mongo_client['findata']
+
+dailyCollection = finDb['day']
+
 # 2. Daily data where each row in the dataframe represents one day (dailyCollection)
 
 # To get all of the symbols available in the collection
@@ -15,7 +23,8 @@ all_stocks_daily_df = pd.DataFrame(list(dailyCollection.find({'close':{'$ne':'Na
 # datapoints: ['Close', 'Volume', 'volume_change', 'volume_score', 'bullish', 'bearish']
 # the goal is to predict the 'Close' using any combination of the other data points.
 '''
-
+# Daily_Data.csv file is created after deleting extra inputs which were considered un-important to use as input.
+# so it will look different as compare to database directly downloaded from the link
 
 # Importing the libraries
 import numpy as np
